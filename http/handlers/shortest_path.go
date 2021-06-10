@@ -16,3 +16,16 @@ func GetShortestPath(c echo.Context) error {
 	utils.ItineraryInfo(src, dest, paths)
 	return c.String(http.StatusOK, "ans")
 }
+
+func GetShortestPathWithTimeCost(c echo.Context) error {
+	src := c.QueryParam("src")
+	dest := c.QueryParam("dest")
+	startTime := c.QueryParam("startTime")
+
+	paths := ctrl.ComputePath(src, dest)
+	lineStnTime, lineChangeTime := ctrl.GetTravelTime(paths, startTime)
+	ctrl.ComputeTime(paths, lineStnTime, lineChangeTime)
+
+	// utils.ItineraryInfo(src, dest, paths)
+	return c.String(http.StatusOK, "ans")
+}

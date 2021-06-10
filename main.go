@@ -8,7 +8,9 @@ import (
 func main() {
 
 	e := echo.New()
-	e.GET("/get-shortest-path", handlers.GetShortestPath)
+
+	e.GET("/get-itinerary", handlers.GetShortestPath)
+	e.GET("/get-itinerary-time-cost", handlers.GetShortestPathWithTimeCost)
 
 	e.Logger.Fatal(e.Start(":1323"))
 }

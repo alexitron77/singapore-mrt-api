@@ -11,7 +11,7 @@ func BuildGraph() map[string][]string {
 		return graph
 	}
 
-	records := core.ReadCSV("../zendesk/assets/station_map.csv")
+	records := core.ReadCSV("../zendesk/public/station_map.csv")
 	prevStn := ""
 
 	for index, line := range records {
