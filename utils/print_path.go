@@ -1,9 +1,14 @@
 package utils
 
-import "fmt"
+import (
+	"fmt"
 
+	"zendesk.com/interview/mrt-backend/models"
+)
+
+// Display itinerary in a human readable format
 func ItineraryInfo(src string, dest string, paths [][]string) {
-	stnMapping := StnMapping()
+	stnMapping := models.StnMapping()
 	fmt.Printf("Travel from %s to %s\n\n", stnMapping[src], stnMapping[dest])
 
 	for i, path := range paths {

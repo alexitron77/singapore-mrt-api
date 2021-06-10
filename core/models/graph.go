@@ -1,8 +1,6 @@
-package utils
+package models
 
-import (
-	"zendesk.com/interview/mrt-backend/conf"
-)
+import "zendesk.com/interview/mrt-backend/core"
 
 var graph map[string][]string = map[string][]string{}
 var stnMapping map[string][]string = map[string][]string{}
@@ -13,7 +11,7 @@ func BuildGraph() map[string][]string {
 		return graph
 	}
 
-	records := conf.ReadCSV("../zendesk/assets/station_map.csv")
+	records := core.ReadCSV("../zendesk/assets/station_map.csv")
 	prevStn := ""
 
 	for index, line := range records {
