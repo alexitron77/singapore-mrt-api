@@ -35,10 +35,12 @@ func BuildGraph() map[string][]string {
 	return graph
 }
 
+// Add direct connected stations to the current station (left and right stations)
 func addEdge(stn string, prevStn string) {
 	graph[stn] = append(graph[stn], prevStn)
 }
 
+// Add different line stations for interchange stations
 func addInterchange() {
 	for _, stn := range stnMapping {
 		for j, connectStn := range stn {

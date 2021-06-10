@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	models "zendesk.com/interview/mrt-backend/models"
+	models "zendesk.com/interview/mrt-backend/core/models"
 )
 
 // Compute all possible paths from source to destination

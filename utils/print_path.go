@@ -3,7 +3,7 @@ package utils
 import (
 	"fmt"
 
-	"zendesk.com/interview/mrt-backend/models"
+	"zendesk.com/interview/mrt-backend/core/models"
 )
 
 // Display itinerary in a human readable format
