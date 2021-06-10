@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo"
-	"zendesk.com/interview/mrt-backend/conf"
+	"zendesk.com/interview/mrt-backend/cmd"
 )
 
 func GetShortestPath(c echo.Context) error {
@@ -18,35 +18,41 @@ func GetShortestPath(c echo.Context) error {
 
 func computePath(src string, dest string) ([][]string, error) {
 	visited := map[string]bool{}
-	graph := conf.BuildGraph()
+	graph := cmd.BuildGraph()
 
 	res := [][]string{}
-	queue := [][]string{}
-
-	queue = append(queue, []string{src})
+	queue := [][]string{{src}}
 
 	for len(queue) > 0 {
-		first := queue[0]
-		lastNode := first[len(first)-1]
+		// Select first element in the queue
+		path := queue[0]
+
+		// Shift element of the queue, equivalent of a .pop operation
 		queue = queue[1:]
 
-		if visited[lastNode] {
-			continue
-		}
+		// Select last node in the path
+		lastNode := path[len(path)-1]
 		visited[lastNode] = true
 
+		// Check if the dest is reached
 		if lastNode == dest {
-			res = append(res, first)
+			res = append(res, path)
+			visited[lastNode] = false
 		} else {
-			next := graph[lastNode]
-			for _, stn := range next {
-				path := append(first, stn)
-				queue = append(queue, path)
+			for _, stn := range graph[lastNode] {
+				if !visited[stn] {
+					temp := make([]string, len(path))
+					copy(temp, path)
+					path := append(temp, stn)
+					queue = append(queue, path)
+
+					visited[stn] = true
+				}
 			}
 		}
 	}
 
-	fmt.Print(res)
+	fmt.Print("Final res", res)
 
 	return res, nil
 }
