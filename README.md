@@ -55,35 +55,47 @@ Change from NE line to DT line
 `curl -X GET "http://localhost:1323/get-itinerary-time-cost?src=EW27&dest=DT12&startTime=2018-01-20T19:35"`
 
 ```
-Travel from Newton to Boon Keng
+Best route: [EW27 EW26 EW25 EW24 EW23 EW22 EW21 CC22 CC21 CC20 CC19 DT9 DT10 DT11 DT12]
+Total Travel time: 160
 
-Best route: [DT11 DT12 NE7 NE8 NE9]
-Total Travel time: 59
-
+Travel on EW line from Boon Lay to Lakeside
+Travel on EW line from Lakeside to Chinese Garden
+Travel on EW line from Chinese Garden to Jurong East
+Travel on EW line from Jurong East to Clementi
+Travel on EW line from Clementi to Dover
+Travel on EW line from Dover to Buona Vista
+Change from EW line to CC line
+Travel on CC line from Buona Vista to Holland Village
+Travel on CC line from Holland Village to Farrer Road
+Travel on CC line from Farrer Road to Botanic Gardens
+Change from CC line to DT line
+Travel on DT line from Botanic Gardens to Stevens
+Travel on DT line from Stevens to Newton
 Travel on DT line from Newton to Little India
-Change from DT line to NE line
-Travel on NE line from Little India to Farrer Park
-Travel on NE line from Farrer Park to Boon Keng
 
 ----
 
-Alternative route: [DT11 DT10 DT9 CC19 CC17 CC16 CC15 CC14 CC13 NE12 NE11 NE10 NE9]
-Total Travel time: 146
+Alternative route: [EW27 EW26 EW25 EW24 EW23 EW22 EW21 EW20 EW19 EW18 EW17 EW16 NE3 NE4 NE5 NE6 NE7 DT12]
+Total Travel time: 198
 
-Travel on DT line from Newton to Stevens
-Travel on DT line from Stevens to Botanic Gardens
-Change from DT line to CC line
-Travel on CC line from Botanic Gardens to Caldecott
-Travel on CC line from Caldecott to Marymount
-Travel on CC line from Marymount to Bishan
-Travel on CC line from Bishan to Lorong Chuan
-Travel on CC line from Lorong Chuan to Serangoon
-Change from CC line to NE line
-Travel on NE line from Serangoon to Woodleigh
-Travel on NE line from Woodleigh to Potong Pasir
-Travel on NE line from Potong Pasir to Boon Keng
+Travel on EW line from Boon Lay to Lakeside
+Travel on EW line from Lakeside to Chinese Garden
+Travel on EW line from Chinese Garden to Jurong East
+Travel on EW line from Jurong East to Clementi
+Travel on EW line from Clementi to Dover
+Travel on EW line from Dover to Buona Vista
+Travel on EW line from Buona Vista to Commonwealth
+Travel on EW line from Commonwealth to Queenstown
+Travel on EW line from Queenstown to Redhill
+Travel on EW line from Redhill to Tiong Bahru
+Travel on EW line from Tiong Bahru to Outram Park
+Change from EW line to NE line
+Travel on NE line from Outram Park to Chinatown
+Travel on NE line from Chinatown to Clarke Quay
+Travel on NE line from Clarke Quay to Dhoby Ghaut
+Travel on NE line from Dhoby Ghaut to Little India
+Change from NE line to DT line
 
-----
 ```
 
 # Tests

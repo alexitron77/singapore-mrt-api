@@ -1,7 +1,7 @@
 package controllers
 
 // Calculate travel time based on shift timings
-func ComputeTravelTime(paths [][]string, lineStnTime map[string]int, lineChangeTime int) []int {
+func ComputeTravelTime(paths [][]string, lineTimeConf map[string]int, lineChangeTime int) []int {
 	computedTravelTime := []int{}
 
 	for _, path := range paths {
@@ -9,7 +9,7 @@ func ComputeTravelTime(paths [][]string, lineStnTime map[string]int, lineChangeT
 		prev := path[0][:2]
 		for _, stn := range path {
 			// If the line is not operating (night-shift), we set the computedTravelTime to -1
-			if lineStnTime[stn[:2]] == 0 {
+			if lineTimeConf[stn[:2]] == 0 {
 				computedTravelTime = append(computedTravelTime, -1)
 				break
 			} else {
@@ -20,7 +20,7 @@ func ComputeTravelTime(paths [][]string, lineStnTime map[string]int, lineChangeT
 					continue
 				}
 				// The mapping table (lineStnTime) is used to retrieve the travel time between stations on the line.
-				totalTravelTime += lineStnTime[stn[:2]]
+				totalTravelTime += lineTimeConf[stn[:2]]
 				prev = stn[:2]
 			}
 		}

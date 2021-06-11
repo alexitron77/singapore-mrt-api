@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestLineMapping(t *testing.T) {
+func TestLineMap(t *testing.T) {
 	expected := map[string]int{
 		"":   0,
 		"CC": 0,
@@ -19,7 +19,7 @@ func TestLineMapping(t *testing.T) {
 
 	path := "../../public/station_map.csv"
 
-	res := LineMapping(path)
+	res := LineMap(path)
 
 	if reflect.DeepEqual(expected, res) == false {
 		t.Errorf("Expected %v\n Got %v", expected, res)

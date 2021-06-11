@@ -18,48 +18,48 @@ func GetTravelShift(paths [][]string, startTime string) (map[string]int, int, er
 	hour := start.Hour()
 
 	// Compute the shift configuration based on weekday and hour
-	lineStationTime, lineChangeTime := computeShift(weekday, hour)
+	lineTimeConf, lineChangeTime := computeShift(weekday, hour)
 
-	return lineStationTime, lineChangeTime, nil
+	return lineTimeConf, lineChangeTime, nil
 }
 
 func computeShift(weekday string, hour int) (map[string]int, int) {
-	lineMapping := models.LineMapping(path)
+	lineTimeConf := models.LineMap(path)
 	lineChangeTime := 0
 
 	// Peak hour
 	if (hour >= 6 && hour < 9) && (weekday != "Saturday" && weekday != "Sunday") || ((weekday == "Saturday" || weekday == "Sunday") && (hour >= 18 && hour < 21)) {
-		lineMapping["CC"] = 10
-		lineMapping["CE"] = 10
-		lineMapping["CG"] = 10
-		lineMapping["DT"] = 10
-		lineMapping["EW"] = 10
-		lineMapping["NE"] = 12
-		lineMapping["NS"] = 12
-		lineMapping["TE"] = 10
+		lineTimeConf["CC"] = 10
+		lineTimeConf["CE"] = 10
+		lineTimeConf["CG"] = 10
+		lineTimeConf["DT"] = 10
+		lineTimeConf["EW"] = 10
+		lineTimeConf["NE"] = 12
+		lineTimeConf["NS"] = 12
+		lineTimeConf["TE"] = 10
 		lineChangeTime = 15
 	} else if hour >= 22 && hour < 6 { // Night hours
-		lineMapping["CC"] = 10
-		lineMapping["CE"] = 0
-		lineMapping["CG"] = 0
-		lineMapping["DT"] = 0
-		lineMapping["EW"] = 10
-		lineMapping["NE"] = 10
-		lineMapping["NS"] = 10
-		lineMapping["TE"] = 8
+		lineTimeConf["CC"] = 10
+		lineTimeConf["CE"] = 0
+		lineTimeConf["CG"] = 0
+		lineTimeConf["DT"] = 0
+		lineTimeConf["EW"] = 10
+		lineTimeConf["NE"] = 10
+		lineTimeConf["NS"] = 10
+		lineTimeConf["TE"] = 8
 		lineChangeTime = 10
 	} else {
-		lineMapping["CC"] = 10
-		lineMapping["CE"] = 10
-		lineMapping["CG"] = 10
-		lineMapping["DT"] = 8
-		lineMapping["EW"] = 10
-		lineMapping["NE"] = 10
-		lineMapping["NS"] = 10
-		lineMapping["TE"] = 8
+		lineTimeConf["CC"] = 10
+		lineTimeConf["CE"] = 10
+		lineTimeConf["CG"] = 10
+		lineTimeConf["DT"] = 8
+		lineTimeConf["EW"] = 10
+		lineTimeConf["NE"] = 10
+		lineTimeConf["NS"] = 10
+		lineTimeConf["TE"] = 8
 		lineChangeTime = 10
 	}
 
-	return lineMapping, lineChangeTime
+	return lineTimeConf, lineChangeTime
 
 }

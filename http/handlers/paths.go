@@ -18,7 +18,7 @@ func GetPaths(c echo.Context) error {
 	}
 
 	paths := ctrl.ComputePath(src, dest)
-	utils.ItineraryInfo(src, dest, paths, []int{})
+	utils.PrintPaths(src, dest, paths, []int{})
 	return c.String(http.StatusOK, "See the logs")
 }
 
@@ -33,14 +33,14 @@ func GetPathsWithTimeCost(c echo.Context) error {
 	}
 
 	paths := ctrl.ComputePath(src, dest)
-	lineStnTime, lineChangeTime, err := ctrl.GetTravelShift(paths, startTime)
+	lineTimeConf, lineChangeTime, err := ctrl.GetTravelShift(paths, startTime)
 
 	if err != nil {
 		return c.String(http.StatusBadRequest, "The start date format in incorrect")
 	}
 
-	computedTravelTime := ctrl.ComputeTravelTime(paths, lineStnTime, lineChangeTime)
+	computedTravelTime := ctrl.ComputeTravelTime(paths, lineTimeConf, lineChangeTime)
 
-	utils.ItineraryInfo(src, dest, paths, computedTravelTime)
+	utils.PrintPaths(src, dest, paths, computedTravelTime)
 	return c.String(http.StatusOK, "See the logs")
 }

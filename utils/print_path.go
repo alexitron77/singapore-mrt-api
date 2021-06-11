@@ -7,10 +7,10 @@ import (
 )
 
 // Display itinerary in a human readable format
-func ItineraryInfo(src string, dest string, paths [][]string, computedTravelTime []int) {
+func PrintPaths(src string, dest string, paths [][]string, computedTravelTime []int) {
 	path := "../zendesk/public/station_map.csv"
-	stnMapping := models.StnMapping(path)
-	fmt.Printf("Travel from %s to %s\n\n", stnMapping[src], stnMapping[dest])
+	stnMap := models.StnMap(path)
+	fmt.Printf("Travel from %s to %s\n\n", stnMap[src], stnMap[dest])
 
 	if len(paths) == 0 {
 		fmt.Printf("No route found\n")
@@ -39,7 +39,7 @@ func ItineraryInfo(src string, dest string, paths [][]string, computedTravelTime
 				prev = curr
 				continue
 			}
-			fmt.Printf("Travel on %s line from %s to %s\n", prev[:2], stnMapping[prev], stnMapping[curr])
+			fmt.Printf("Travel on %s line from %s to %s\n", prev[:2], stnMap[prev], stnMap[curr])
 			prev = curr
 		}
 		fmt.Print("\n----\n\n")
