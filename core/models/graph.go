@@ -1,6 +1,8 @@
 package models
 
-import "zendesk.com/interview/mrt-backend/core"
+import (
+	"zendesk.com/interview/mrt-backend/core"
+)
 
 var graph map[string][]string = map[string][]string{}
 var stnMapping map[string][]string = map[string][]string{}
