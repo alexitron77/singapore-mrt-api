@@ -20,11 +20,71 @@ Then you can simply call the API endpoint with a curl command:
 
 - **/get-itinerary**: Get travel paths
 
-`curl -X GET "http://localhost:1323/get-itinerary?src=EW27&dest=DT12"`
+`curl -X GET "http://localhost:1323/get-itinerary?src=EW15&dest=DT12"`
+
+```
+Travel from Tanjong Pagar to Little India
+
+Best route: [EW15 EW14 EW13 EW12 DT14 DT13 DT12]
+Total Station travelled: 7
+
+Travel on EW line from Tanjong Pagar to Raffles Place
+Travel on EW line from Raffles Place to City Hall
+Travel on EW line from City Hall to Bugis
+Change from EW line to DT line
+Travel on DT line from Bugis to Rochor
+Travel on DT line from Rochor to Little India
+
+----
+
+Alternative route: [EW15 EW14 EW13 NS25 NS24 NE6 NE7 DT12]
+Total Station travelled: 8
+
+Travel on EW line from Tanjong Pagar to Raffles Place
+Travel on EW line from Raffles Place to City Hall
+Change from EW line to NS line
+Travel on NS line from City Hall to Dhoby Ghaut
+Change from NS line to NE line
+Travel on NE line from Dhoby Ghaut to Little India
+Change from NE line to DT line
+
+```
 
 - **/get-itinerary-time-cost**: Get travel paths with time cost computing
 
 `curl -X GET "http://localhost:1323/get-itinerary-time-cost?src=EW27&dest=DT12&startTime=2018-01-20T19:35"`
+
+```
+Travel from Newton to Boon Keng
+
+Best route: [DT11 DT12 NE7 NE8 NE9]
+Total Travel time: 59
+
+Travel on DT line from Newton to Little India
+Change from DT line to NE line
+Travel on NE line from Little India to Farrer Park
+Travel on NE line from Farrer Park to Boon Keng
+
+----
+
+Alternative route: [DT11 DT10 DT9 CC19 CC17 CC16 CC15 CC14 CC13 NE12 NE11 NE10 NE9]
+Total Travel time: 146
+
+Travel on DT line from Newton to Stevens
+Travel on DT line from Stevens to Botanic Gardens
+Change from DT line to CC line
+Travel on CC line from Botanic Gardens to Caldecott
+Travel on CC line from Caldecott to Marymount
+Travel on CC line from Marymount to Bishan
+Travel on CC line from Bishan to Lorong Chuan
+Travel on CC line from Lorong Chuan to Serangoon
+Change from CC line to NE line
+Travel on NE line from Serangoon to Woodleigh
+Travel on NE line from Woodleigh to Potong Pasir
+Travel on NE line from Potong Pasir to Boon Keng
+
+----
+```
 
 # Tests
 
