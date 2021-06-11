@@ -9,8 +9,8 @@ func main() {
 
 	e := echo.New()
 
-	e.GET("/get-itinerary", handlers.GetShortestPath)
-	e.GET("/get-itinerary-time-cost", handlers.GetShortestPathWithTimeCost)
+	e.GET("/get-itinerary", handlers.GetPaths)
+	e.GET("/get-itinerary-time-cost", handlers.GetPathsWithTimeCost)
 
 	e.Logger.Fatal(e.Start(":1323"))
 }
