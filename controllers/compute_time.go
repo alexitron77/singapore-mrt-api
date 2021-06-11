@@ -1,26 +1,27 @@
 package controllers
 
-import "fmt"
+// Calculate travel time based on shift timings
+func ComputeTravelTime(paths [][]string, lineStnTime map[string]int, lineChangeTime int) []int {
+	computedTravelTime := []int{}
 
-func ComputeTime(paths [][]string, lineStnTime map[string]int, lineChangeTime int) {
 	for _, path := range paths {
-		totalTime := 0
+		totalTravelTime := 0
 		prev := path[0][:2]
-		// fmt.Print(path)
 		for _, stn := range path {
 			if lineStnTime[stn[:2]] == 0 {
+				computedTravelTime = append(computedTravelTime, -1)
 				break
 			} else {
 				if prev != stn[:2] {
-					fmt.Print("station", stn)
-					totalTime += lineChangeTime
+					totalTravelTime += lineChangeTime
 					prev = stn[:2]
 					continue
 				}
-				totalTime += lineStnTime[stn[:2]]
+				totalTravelTime += lineStnTime[stn[:2]]
 				prev = stn[:2]
 			}
 		}
-		fmt.Print(totalTime)
+		computedTravelTime = append(computedTravelTime, totalTravelTime)
 	}
+	return computedTravelTime
 }
