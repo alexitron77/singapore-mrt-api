@@ -4,10 +4,13 @@ import (
 	models "zendesk.com/interview/mrt-backend/core/models"
 )
 
+var path = "../zendesk/public/station_map.csv"
+
 // Compute all possible paths from source to destination
 func ComputePath(src string, dest string) [][]string {
+
 	visited := map[string]bool{}
-	graph := models.BuildGraph()
+	graph := models.BuildGraph(path)
 
 	res := [][]string{}
 	queue := [][]string{{src}}
