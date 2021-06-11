@@ -8,7 +8,8 @@ import (
 
 // Display itinerary in a human readable format
 func ItineraryInfo(src string, dest string, paths [][]string, computedTravelTime []int) {
-	stnMapping := models.StnMapping()
+	path := "../zendesk/public/station_map.csv"
+	stnMapping := models.StnMapping(path)
 	fmt.Printf("Travel from %s to %s\n\n", stnMapping[src], stnMapping[dest])
 
 	if len(paths) == 0 {
