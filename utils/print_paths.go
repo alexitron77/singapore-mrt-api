@@ -7,17 +7,28 @@ import (
 )
 
 // Display itinerary in a human readable format
-func ItineraryInfo(src string, dest string, paths [][]string) {
+func ItineraryInfo(src string, dest string, paths [][]string, computedTravelTime []int) {
 	stnMapping := models.StnMapping()
 	fmt.Printf("Travel from %s to %s\n\n", stnMapping[src], stnMapping[dest])
 
+	if len(paths) == 0 {
+		fmt.Printf("No route found\n")
+	}
+
 	for i, path := range paths {
 		if i == 0 {
-			fmt.Printf("Best route: %s\n\n", path)
+			fmt.Printf("Best route: %s\n", path)
 		} else {
-			fmt.Printf("Alternative route: %s\n\n", path)
+			fmt.Printf("Alternative route: %s\n", path)
 		}
-		fmt.Printf("Total Station travelled: %d\n\n", len(path))
+		if len(computedTravelTime) > 0 {
+			if computedTravelTime[i] == -1 {
+				break
+			}
+			fmt.Printf("Total Travel time: %d\n\n", computedTravelTime[i])
+		} else {
+			fmt.Printf("Total Station travelled: %d\n\n", len(path))
+		}
 
 		prev := path[0]
 
@@ -30,6 +41,6 @@ func ItineraryInfo(src string, dest string, paths [][]string) {
 			fmt.Printf("Travel on %s line from %s to %s\n", prev[:2], stnMapping[prev], stnMapping[curr])
 			prev = curr
 		}
-		fmt.Println()
+		fmt.Print("\n----\n\n")
 	}
 }
