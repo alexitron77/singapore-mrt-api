@@ -2,16 +2,17 @@ package core
 
 import (
 	"encoding/csv"
+	"fmt"
 	"log"
 	"os"
-	"path/filepath"
 )
 
 func ReadCSV(source string) [][]string {
-	file, _ := filepath.Abs(source)
+	file := source
 	csvFile, err := os.Open(file)
 
 	if err != nil {
+		fmt.Print(err)
 		log.Fatal("Error while opening the file")
 	} else {
 		log.Print("Successfully open file")

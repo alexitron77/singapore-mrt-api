@@ -6,9 +6,9 @@ import (
 
 var stnLine map[string]int = map[string]int{}
 
-func LineMapping() map[string]int {
+func LineMapping(path string) map[string]int {
 
-	records := core.ReadCSV("../zendesk/public/station_map.csv")
+	records := core.ReadCSV(path)
 	prev := ""
 	for _, line := range records {
 		if prev != line[0][:2] {

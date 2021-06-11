@@ -6,12 +6,12 @@ var graph map[string][]string = map[string][]string{}
 var stnMapping map[string][]string = map[string][]string{}
 
 // Build a adjacent list graph based on a csv file of Singapore MRT station
-func BuildGraph() map[string][]string {
+func BuildGraph(path string) map[string][]string {
 	if len(graph) > 0 {
 		return graph
 	}
 
-	records := core.ReadCSV("../zendesk/public/station_map.csv")
+	records := core.ReadCSV(path)
 	prevStn := ""
 
 	for index, line := range records {
