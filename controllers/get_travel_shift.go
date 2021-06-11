@@ -23,7 +23,7 @@ func GetTravelShift(paths [][]string, startTime string) (map[string]int, int, er
 }
 
 func computeShift(weekday string, hour int) (map[string]int, int) {
-	lineMapping := models.LineMapping()
+	lineMapping := models.LineMapping(path)
 	lineChangeTime := 0
 
 	// Peak hour
