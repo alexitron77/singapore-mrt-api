@@ -6,7 +6,7 @@ import (
 	models "zendesk.com/interview/mrt-backend/core/models"
 )
 
-// Compute shifts based on startTime
+// Get shifts based on startTime
 func GetTravelShift(paths [][]string, startTime string) (map[string]int, int, error) {
 	start, err := time.Parse("2006-01-02T15:04", startTime)
 
@@ -17,6 +17,7 @@ func GetTravelShift(paths [][]string, startTime string) (map[string]int, int, er
 	weekday := start.Weekday().String()
 	hour := start.Hour()
 
+	// Compute the shift configuration based on weekday and hour
 	lineStationTime, lineChangeTime := computeShift(weekday, hour)
 
 	return lineStationTime, lineChangeTime, nil

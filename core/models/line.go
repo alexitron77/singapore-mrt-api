@@ -6,6 +6,7 @@ import (
 
 var stnLine map[string]int = map[string]int{}
 
+// Extract all the lines, eg:["CC": 0, "EW: 0"]
 func LineMapping(path string) map[string]int {
 
 	records := core.ReadCSV(path)
